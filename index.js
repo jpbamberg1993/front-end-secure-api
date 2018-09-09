@@ -47,3 +47,20 @@ headlineBtn.addEventListener('click', () => {
     .then(response => response.text())
     .then(data => UIUpdate.alertBox(data))
 })
+
+secretBtn.addEventListener('click', () => {
+  let headers = {}
+  if (ACCESS_TOKEN) {
+    headers = {
+      "Authorization": `Bearer ${ACCESS_TOKEN}`
+    }
+  }
+  fetch(`${API_URL}/api/private`, { headers })
+    .then(resp => {
+      UIUpdate.alertCat(resp.status) 
+      return resp.text()
+    })
+    .then(data => {
+      UIUpdate.alertBox(data)
+    })
+})

@@ -6,7 +6,7 @@ let ACCESS_TOKEN = undefined
 const headlineBtn = document.querySelector('#headline')
 const secretBtn = document.querySelector('#secret')
 const loginBtn = document.querySelector('#login')
-const logoutBtn = document.querySelector('#logout')
+const logoutBtn = document.querySelector('#logoutBtn')
 
 loginBtn.addEventListener('click', (event) => {
   modal.style.display = 'none'
@@ -34,6 +34,12 @@ loginBtn.addEventListener('click', (event) => {
     }
     UIUpdate.alertBox(data)
   })
+})
+
+logoutBtn.addEventListener('click', () => {
+  ACCESS_TOKEN = undefined
+  UIUpdate.loggedOut()
+  UIUpdate.alertBox('logged out')
 })
 
 headlineBtn.addEventListener('click', () => {

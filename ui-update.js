@@ -21,3 +21,8 @@ UIUpdate.loggedIn = function(token) {
   loginModalBtn.classList.add('d-none')
   logoutBtn.classList.remove('d-none')
 }
+
+UIUpdate.loggedOut = function() {
+  loginModalBtn.classList.remove('d-none')
+  logoutBtn.classList.add('d-none')
+}

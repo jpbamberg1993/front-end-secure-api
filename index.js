@@ -29,8 +29,8 @@ loginBtn.addEventListener('click', (event) => {
   }).then(data => {
     if (data.access_token) {
       ACCESS_TOKEN = data.access_token
-      data = `Access Token: ${data.access_token}`
-      UIUpdate.loggedIn()
+      data = `Access Token: ${ACCESS_TOKEN}`
+      UIUpdate.loggedIn(ACCESS_TOKEN)
     }
     UIUpdate.alertBox(data)
   })

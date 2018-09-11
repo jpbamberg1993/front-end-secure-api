@@ -44,8 +44,11 @@ logoutBtn.addEventListener('click', () => {
 
 headlineBtn.addEventListener('click', () => {
   fetch(`${API_URL}/api/public`)
-    .then(response => response.text())
-    .then(data => UIUpdate.alertBox(data))
+    .then(resp => {
+      UIUpdate.alertCat(resp.status)
+      return resp.text()
+    })
+    .then(data => { UIUpdate.alertBox(data) })
 })
 
 secretBtn.addEventListener('click', () => {

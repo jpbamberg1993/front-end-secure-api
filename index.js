@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:3000'
 const AUTH_URL = 'http://localhost:8888'
 
-let ACCESS_TOKEN = undefined
+let ACCESS_TOKEN = localStorage.getItem('access_token') || undefined
 
 const headlineBtn = document.querySelector('#headline')
 const secretBtn = document.querySelector('#secret')

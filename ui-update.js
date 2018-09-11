@@ -18,11 +18,13 @@ UIUpdate.getUsernamePassword = function() {
 }
 
 UIUpdate.loggedIn = function(token) {
+  localStorage.setItem('access_token', token)
   loginModalBtn.classList.add('d-none')
   logoutBtn.classList.remove('d-none')
 }
 
 UIUpdate.loggedOut = function() {
+  localStorage.removeItem('access_token')
   loginModalBtn.classList.remove('d-none')
   logoutBtn.classList.add('d-none')
 }

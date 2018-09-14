@@ -4,7 +4,7 @@ const expressJwt = require('express-jwt')
 const cors = require('cors')
 
 const app = express()
-const PORT = process.env.API_PORT || 8888
+const PORT = process.env.API_PORT || 3000
 
 app.use(bodyParser())
 app.use(cors())

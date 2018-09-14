@@ -9,6 +9,12 @@ const PORT = process.env.API_PORT || 3000
 app.use(bodyParser())
 app.use(cors())
 
+const jwtCheck = expressJwt({
+  secret: process.env.AUTH0_SECRET,
+  audience: 'egghead-demo',
+  issuer: "https://bambam.auth0.com/"
+})
+
 app.get('/api/public', (req, res) => {
   res.status(200)
      .send('This is public content')
@@ -16,7 +22,7 @@ app.get('/api/public', (req, res) => {
 
 app.get(
   '/api/private',
-  expressJwt({secret: 'mysupersecretkey'}),
+  jwtCheck,
   (req, res) => {
     res.status(200)
        .send('This is private information')

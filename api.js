@@ -28,6 +28,15 @@ app.get(
        .send('This is private information')
   })
 
+app.use(function(err, req, res, next) {
+  if(err.name === 'UnauthorizedError') {
+    res.status(err.status).send(err.message);
+    logger.error(err);
+    return;
+  }
+  next();
+});
+
 app.get('*', (req, res) => res.status(404))
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))

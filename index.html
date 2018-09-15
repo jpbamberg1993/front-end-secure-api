@@ -7,7 +7,7 @@
 
   <body>
     <nav>
-      <button id="loginModalBtn">Login</button>
+      <button id="loginBtn">Login</button>
       <button class="d-none" id="logoutBtn">Logout</button>
     </nav>
 
@@ -23,20 +23,9 @@
     <center>
       <img src="http://http.cat/200" id="httpcat" width="350px"/>
     </center>
-
-    <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <form>
-          <input type="text" name="username" id="username" />
-          <input type="password" name="password" id="password" />
-          <button type="button" data-dismiss="modal" id="login">Login</button>
-        </form>
-      </div>
-    </div>
   </body>
 
-  <script src="./modal.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
   <script src="./ui-update.js"></script>
   <script src="./index.js"></script>
 </html>

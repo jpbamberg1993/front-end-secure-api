@@ -1,39 +1,22 @@
 const API_URL = 'http://localhost:3000'
-const AUTH_URL = 'http://localhost:8888'
 
 let ACCESS_TOKEN = localStorage.getItem('access_token') || undefined
+const webAuth = new auth0.WebAuth({
+  domain: 'bambam.auth0.com',
+  clientID: process.env.AUTH0_CLIENTID,
+  responseType: 'token',
+  audience: 'egghead-demo',
+  scope: '',
+  redirectUri: window.location.href
+})
 
 const headlineBtn = document.querySelector('#headline')
 const secretBtn = document.querySelector('#secret')
-const loginBtn = document.querySelector('#login')
+const loginBtn = document.querySelector('#loginBtn')
 const logoutBtn = document.querySelector('#logoutBtn')
 
-loginBtn.addEventListener('click', (event) => {
-  modal.style.display = 'none'
-  fetch(`${AUTH_URL}/login`, {
-    method: 'POST',
-    mode: "cors",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-      "accept": "application/json"
-    },
-    body: JSON.stringify(UIUpdate.getUsernamePassword())
-  }).then(resp => {
-    UIUpdate.alertCat(resp.status)
-    if (resp.status == 200) {
-      return resp.json()
-    } else {
-      return resp.text()
-    }
-  }).then(data => {
-    if (data.access_token) {
-      ACCESS_TOKEN = data.access_token
-      data = `Access Token: ${ACCESS_TOKEN}`
-      UIUpdate.loggedIn(ACCESS_TOKEN)
-    }
-    UIUpdate.alertBox(data)
-  })
+loginBtn.addEventListener('click', () => {
+  webAuth.authorize()
 })
 
 logoutBtn.addEventListener('click', () => {

@@ -50,3 +50,15 @@ secretBtn.addEventListener('click', () => {
       UIUpdate.alertBox(data)
     })
 })
+
+const parseHash = () => {
+  webAuth.parseHash((err, authResult) => {
+    if (authResult && authResult.accessToken) {
+      window.location.hash = ''
+      ACCESS_TOKEN = authResult.accessToken
+      UIUpdate.loggedIn(ACCESS_TOKEN)
+    }
+  })
+}
+
+window.addEventListener("DOMContentLoaded", parseHash)
